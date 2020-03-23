@@ -7,13 +7,6 @@ module.exports = {
   extends: [
     'standard'
   ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
-  },
-  parserOptions: {
-    ecmaVersion: 2018
-  },
   rules: {
     'no-extra-semi': 'error',
     'semi': [2,'always']
