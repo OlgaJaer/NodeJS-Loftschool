@@ -5,12 +5,12 @@
   "license": "ISC",
   "scripts": {
     "start": "nodemon app.js"
-  
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "@sendgrid/mail": "^6.5.5",
     "dotenv": "^8.2.0",
     "jquery": "^3.3.1",

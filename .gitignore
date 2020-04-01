@@ -34,7 +34,7 @@ Thumbs.db
 bower_components
 dist
 build
-public
+public_1
 gulpfile.js
 
 # Node.JS
