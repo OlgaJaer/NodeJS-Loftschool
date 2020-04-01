@@ -4,7 +4,8 @@
   "author": "krabaton",
   "license": "ISC",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "admin": "node ./models/addAdmin.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
@@ -19,7 +20,9 @@
     "koa-onerror": "^4.1.0",
     "koa-pug": "^4.0.3",
     "koa-router": "^8.0.8",
+    "koa-session": "^5.13.1",
     "koa-static": "^5.0.0",
+    "lowdb": "^1.0.0",
     "normalize.css": "^7.0.0",
     "pug": "^2.0.4"
   }

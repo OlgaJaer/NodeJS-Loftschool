@@ -9,6 +9,6 @@ router.get('/', controllers.index);
 router.post('/', koaBody(), validation.isValidEmail, controllers.contact);
 router.get('/login', controllers.login);
 
-//router.post('/login', koaBody(), validation.isValidAuth, controllers.auth);
+router.post('/login', koaBody(), validation.isValidAuth, controllers.auth);
 
 module.exports = router;

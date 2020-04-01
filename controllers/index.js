@@ -8,16 +8,30 @@ module.exports.index = async ctx => {
   await ctx.render("pages/index");
 };
 
-// module.exports.contact = async ctx => {
-//   await ctx.render("pages/index");
-// };
-
 module.exports.login = async ctx => {
   await ctx.render("pages/login");
 };
 
 module.exports.admin = async ctx => {
   await ctx.render("pages/admin");
+};
+
+module.exports.auth = async ctx => {
+  const { login, password } = ctx.request.body;
+  const user = db.getUser();
+  if (user.login === login && psw.validPassword(password)) {
+    ctx.session.isAuth = true;
+    ctx.body = {
+      mes: "Done",
+      status: "OK"
+    };
+  } else {
+    ctx.status = 403;
+    ctx.body = {
+      mes: "Forbiden",
+      status: "Error"
+    };
+  }
 };
 
 module.exports.contact = async ctx => {
@@ -42,4 +56,6 @@ module.exports.contact = async ctx => {
     mes: "Done",
     status: "OK"
   };
+  
+  ctx.redirect('/');
 };
