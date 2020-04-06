@@ -6,32 +6,23 @@ const adapter = new FileSync("./models/db.json");
 const db = low(adapter);
 
 const getUser = () => db.getState().user;
-const getGoods = () => db.getState().goods;
-const saveGoods = ({ photo, name, price }) =>
+
+const saveSkills = ({ age, concerts, cities, years }) =>
   db
-    .get("goods")
+    .get("skills")
     .push({
-      photo,
-      name,
-      price 
+      age,
+      concerts,
+      cities,
+      years
     })
-    .write();  
-const saveSkills = ({ ages, cities, years }) =>
-    db
-      .get("skills")
-      .push({
-        ages,
-        cities,
-        years  
-      })
-      .write();   
-const saveUser = ({ login, hash, salt }) =>
-  db.set("user", { login, hash, salt }).write();
+    .write();
+    
+const saveUser = ({ email, hash, salt }) =>
+  db.set("user", { email, hash, salt }).write();
 
 module.exports = {
   getUser,
   saveSkills,
-  getGoods,
-  saveGoods,
   saveUser
 };

@@ -1,12 +1,13 @@
-const Koa = require("koa");
+const Koa = require('koa');
 const app = new Koa();
-const session = require("koa-session");
+const session = require('koa-session');
 const Pug = require("koa-pug");
-const onerror = require("koa-onerror");
 const fs = require("fs");
 const path = require("path");
-const errorHandler = require('./libs/error');
+const errorHandler = require("./libs/error");
 const config = require("./config");
+const flash = require("koa-connect-flash");
+const koaBody = require("koa-body");
 
 new Pug({
   viewPath: path.resolve(__dirname, "./views"),
@@ -17,11 +18,11 @@ new Pug({
 });
 
 app.use(require("koa-static")("./public"));
-
-onerror(app);
+app.use(flash());
 
 const router = require("./routes");
 app
+  .use(koaBody())
   .use(session(config.session, app))
   .use(router.routes())
   .use(router.allowedMethods())
