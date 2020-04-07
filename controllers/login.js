@@ -13,7 +13,7 @@ module.exports.post = async ctx => {
   const user = db.getUser();
   if (user.email === email && psw.validPassword(password)) {
     ctx.session.isAdmin = true;
-   console.log('LOGGED IN')
+   //console.log('LOGGED IN')
    ctx.redirect('/admin');
   } else {
     ctx.flash("info", "Неправильный логин или пароль");

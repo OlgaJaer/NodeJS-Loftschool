@@ -6,29 +6,14 @@
   },
   "skills": [
     {
-      "age": "5",
-      "concerts": "5",
-      "cities": "5",
-      "years": "5"
-    },
-    {
-      "age": "4",
-      "concerts": "4",
-      "cities": "4",
-      "years": "4"
-    },
-    {
       "age": "3",
       "concerts": "3",
       "cities": "3",
       "years": "3"
-    },
-    {
-      "age": "4",
-      "concerts": "4",
-      "cities": "4",
-      "years": "4"
     }
+  
   ],
-  "products": []
+  "products": [
+   
+  ]
 }

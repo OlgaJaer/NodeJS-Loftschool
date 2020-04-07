@@ -1,7 +1,7 @@
 
 import { square, MyClass } from './module';
 
-console.log(square(5));
+//console.log(square(5));
 var cred = {
   name: 'Юрий Кучма',
   enrollmentNo: 11115078

@@ -19,11 +19,13 @@ module.exports.isValidEmail = (ctx, next) => {
     const message = error.details.map(el => el.message).join("; ");
     ctx.status = 400;
     ctx.flash('info', 'Нужно заполнить все поля!');
-    return (ctx.body = {
-      mes: message,
-      status: "Error"
-    });
+    //return ctx.flash('info', 'Нужно заполнить все поля!');
+    // return (ctx.body = {
+    //   mes: message,
+    //   status: "Error"
+    // });
   }
+  //ctx.redirect('/');
   next();
 };
 
@@ -45,8 +47,6 @@ module.exports.isValidAuth = (ctx, next) => {
     // });
     //ctx.redirect('/');
   }
-
-  console.log("Next auth");
   ctx.redirect('/');
   next();
 };

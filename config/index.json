@@ -1,5 +1,6 @@
 {
     "session": {
+      "secret": "process.env.SESSION_SECRET_KEY",
       "key": "koa:sess",
       "maxAge": 86400000,
       "overwrite": true,

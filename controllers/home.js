@@ -16,20 +16,20 @@ module.exports.post = async ctx => {
     ctx.flash("info", "Нужно заполнить все поля!");
     ctx.redirect("/");
   }
+
   try {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     const msg = {
-      to: "olgar.mamaeva@rambler.ru",
+      to: process.env.EMAIL_BOX,
       from: email,
       subject: `Sending email from ${name}`,
       text: message
     };
     sgMail.send(msg);
+    
   } catch (err) {
     ctx.throw("Error", err.message);
-    ctx.flash("info", "Нужно заполнить все поля!");
-    await ctx.redirect("/");
   }
   ctx.flash("info", "Письмо успешно отправлено!");
-  await ctx.redirect("/");
+  ctx.redirect("/");
 };
