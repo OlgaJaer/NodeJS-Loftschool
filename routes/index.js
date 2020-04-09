@@ -11,7 +11,7 @@ const ctrlLogin = require("../controllers/login");
 const ctrlAdmin = require("../controllers/admin");
 
 router.get("/", ctrlHome.get);
-router.post("/", ctrlHome.post);
+router.post("/", validation.isValidEmail, ctrlHome.post);
 
 router.get("/login", ctrlLogin.get);
 router.post("/login", ctrlLogin.post);

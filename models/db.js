@@ -6,6 +6,8 @@ const adapter = new FileSync("./models/db.json");
 const db = low(adapter);
 
 const getUser = () => db.getState().user;
+const getSkills = () => db.get('skills').value();
+const getProducts = () => db.get('products').value(); 
 
 const saveSkills = ({ age, concerts, cities, years }) =>
   db
@@ -26,6 +28,8 @@ const saveUser = ({ email, hash, salt }) =>
 module.exports = {
   getArr,
   getUser,
+  getSkills,
+  getProducts,
   saveSkills,
   saveUser
 };
