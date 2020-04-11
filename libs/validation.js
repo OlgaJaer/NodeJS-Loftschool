@@ -1,7 +1,7 @@
 const joi = require('@hapi/joi');
 const fs = require("fs");
 
-module.exports.isValidEmail = (ctx, next) => {
+module.exports.isValidEmail = (req,res, next) => {
   const schema = joi.object().keys({
     name: joi.string()
       .max(80)
@@ -14,30 +14,30 @@ module.exports.isValidEmail = (ctx, next) => {
       .required()
   });
 
-    const { error } = schema.validate(ctx.request.body);
+    const { error } = schema.validate(req.body);
   if (error) {
     const message = error.details.map(el => el.message).join("; ");
-    ctx.status = 400;
-    ctx.flash('info', 'Нужно заполнить все поля!');
+    res.status = 400;
+    req.flash('info', 'Нужно заполнить все поля!');
   }
  
   next();
 };
 
-module.exports.isValidAuth = (ctx, next) => {
+module.exports.isValidAuth = (req,res, next) => {
   const schema = joi.object().keys({
     email: joi.string().email().required(),
     password: joi.string().required()
   });
-  const { error } = schema.validate(ctx.request.body);
+  const { error } = schema.validate(req.body);
   if (error) {
     const message = error.details.map(el => el.message).join("; ");
 
-    ctx.status = 400;
+    res.status = 400;
     
-    return ctx.flash('info', 'Нужно заполнить все поля!');
+    return req.flash('info', 'Нужно заполнить все поля!');
   }
-  ctx.redirect('/');
+  res.redirect('/');
   next();
 };
 

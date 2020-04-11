@@ -1,19 +1,19 @@
-module.exports = async (ctx, next) => {
+module.exports = async (req, res, next) => {
     try {
       await next()
-      if (ctx.status === 404) {
-        await ctx.render('error', {
-          status: ctx.response.status,
-          error: ctx.response.message,
+      if (res.status === 404) {
+        await res.render('error', {
+          status: res.status,
+          error: res.message,
         })
       }
     } catch (err) {
       // TODO: Must be logger
       console.log(err)
-      ctx.status = err.statusCode || err.status || 500
-      await ctx.render('error', {
-        status: ctx.response.status,
-        error: ctx.response.message,
+      res.status = err.statusCode || err.status || 500
+      await res.render('error', {
+        status: res.status,
+        error: res.message,
       })
     }
   }

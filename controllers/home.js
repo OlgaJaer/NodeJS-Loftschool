@@ -3,20 +3,20 @@ require("dotenv").config();
 const db = require("../models/db");
 
 
-module.exports.get = async (ctx) => {
+module.exports.get = async (req,res) => {
   const skills = db.getSkills();
   const products = db.getProducts();
 
-  await ctx.render("pages/index", {
+  await res.render("pages/index", {
     skills: skills,
     products: products,
-    msgsemail: ctx.flash("info"),
+    msgsemail: req.flash("info"),
   });
 };
 
-module.exports.post = async (ctx) => {
-  const { name, email, message } = ctx.request.body;
-
+module.exports.post = async (req,res) => {
+  const { name, email, message } = req.body;
+  console.log(req.body)
   try {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     const msg = {
@@ -26,14 +26,14 @@ module.exports.post = async (ctx) => {
       text: message,
     };
     sgMail.send(msg);
-    ctx.flash("info", "Письмо успешно отправлено!");
-    ctx.redirect("/");
+    req.flash("info", "Письмо успешно отправлено!");
+    res.redirect("/#form");
   } catch (err) {
-    ctx.flash("info", "Письмо не отправлено");
+    req.flash("info", "Письмо не отправлено");
     if (err.res) {
       console.err(err.res.body);
     }
   }
 
-  ctx.redirect("/");
+  res.redirect("/");
 };

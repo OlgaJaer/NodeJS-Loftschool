@@ -1,32 +1,36 @@
-const Koa = require('koa');
-const app = new Koa();
-const session = require('koa-session');
-const Pug = require("koa-pug");
+const express = require("express");
+const session = require("express-session");
 const fs = require("fs");
-const path = require("path");
-const errorHandler = require("./libs/error");
+const flash = require("connect-flash");
 const config = require("./config");
-const flash = require("koa-connect-flash");
-const koaBody = require("koa-body");
+const errorHandler = require("./libs/error");
+const app = express();
 
-new Pug({
-  viewPath: path.resolve(__dirname, "./views"),
-  pretty: false,
-  basedir: "./views",
-  noCache: true,
-  app: app
-});
+const expiryDate = new Date(Date.now() + 60 * 60 * 1000);
 
-app.use(require("koa-static")("./public"));
+// view engine setup
+app.set("views", "./views");
+app.set("view engine", "pug");
+
+app.use(express.static(__dirname + "/public"));
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(flash());
 
-const router = require("./routes");
-app
-  .use(koaBody())
-  .use(session(config.session, app))
-  .use(router.routes())
-  .use(router.allowedMethods())
-  .use(errorHandler);
+app.use(
+  session({
+    secret: "process.env.SESSION_SECRET_KEY",
+    key: "sessionkey",
+    cookie: { magAge: 86400000, expires: expiryDate },
+    saveUninitalized: false,
+    resave: false,
+  })
+);
+
+app.use("/", require("./routes/index"));
+
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 

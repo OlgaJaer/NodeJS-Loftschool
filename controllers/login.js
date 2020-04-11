@@ -1,21 +1,21 @@
 const db = require("../models/db");
 const psw = require("../libs/password");
 
-module.exports.get = async (ctx) => {
-  if (ctx.session.isAdmin) {
-    ctx.redirect("/admin");
+module.exports.get = async (req, res) => {
+  if (req.session.isAdmin) {
+    res.redirect("/admin");
   }
-  await ctx.render("pages/login", { msglogin: ctx.flash("info") });
+  await res.render("pages/login", { msglogin: req.flash("info") });
 };
 
-module.exports.post = async (ctx) => {
-  const { email, password } = ctx.request.body;
+module.exports.post = async (req, res) => {
+  const { email, password } = req.body;
   const user = db.getUser();
   if (user.email === email && psw.validPassword(password)) {
-    ctx.session.isAdmin = true;
-    ctx.redirect("/admin");
+    req.session.isAdmin = true;
+    res.redirect("/admin");
   } else {
-    ctx.flash("info", "Неправильный логин или пароль");
-    ctx.redirect("/login");
+    req.flash("info", "Неправильный логин или пароль");
+    res.redirect("/login");
   }
 };

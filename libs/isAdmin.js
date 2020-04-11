@@ -1,8 +1,8 @@
-const isAdmin = (ctx, next) => {
-  if (ctx.session.isAdmin) {
+const isAdmin = (req,res, next) => {
+  if (req.session.isAdmin) {
     return next();
   }
-  ctx.redirect("./");
+  res.redirect("./");
 };
 
 module.exports = isAdmin;
