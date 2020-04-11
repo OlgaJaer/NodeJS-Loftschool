@@ -1,0 +1,76 @@
+{
+  "user": {
+    "email": "admin@ru.ru",
+    "hash": "f38270ee5f58cd5099c068a551cac5637753a4e7358123d4a4b351d6490fd3eaa429fbce2f7392615fdc9a61f7d8e73e8a6a9c47709cb82b836f7d83e8cbcd2ebe30867088eaa2e5158319c78caf47b39c7dc721b6449f498978bff3c2c1297c905d893746524dcc86e358d17370f185566576db19a570f8463f0bae818453890f164d8637b04ce9f0b5bc357b751c406ed1fc47d1c2d6b8e2ce72154d0665f1e156130302efeffa81a902b11a1ba63a9bfe4ab04bbb8edb59b2b05b12e1fda64c89a641cb46ebf20744fb88d26ec704fa49f92c643a007e1a2571bea3b54901d8ce053936023df6ed578902f6ea46a3766ac82d65d42dccaa8e42349250e0f76609e0195b6ea27ff62b62a401843a42cc6bc304f853d8cfd3250d4675ea45459df4ddd2e24b822a5fe6f43cfbf570c89cdbb5a5d1eb2e05f027ce1517c297535c94f9bbca059e9538826516d8ddd810f41a00f73b3460a7dc206d2403ca81b29ffdf5246d4d1b1d1b2106988bd93c8d0f781a4cdcdc4ac6edada8c230dd8bed1bfa3ea0d90a3011e4ccfcf167969bf4acd63bc410a0d1402b0f238ee386168aaeb430b832aa248b936a33df8f0216b2be43d1385bb74908c8520298bbd435a4514f459e20efb282531185caf5638551a4f39465c0854ea031fc428df02dcce610e16a4d9ff0383a66771dedb1266d27269eb6b658d5b9a4d4586b89f3ea4f17",
+    "salt": "2a52227c30747e2ab668cd8f0c99f6e4"
+  },
+  "skills": [
+    {
+      "name": "age",
+      "number": "76",
+      "text": "Возраст начала занятий на скрипке"
+    },
+    {
+      "name": "concerts",
+      "number": "56",
+      "text": "Концертов отыграл"
+    },
+    {
+      "name": "cities",
+      "number": "56",
+      "text": "Максимальное число городов в туре"
+    },
+    {
+      "name": "years",
+      "number": "56",
+      "text": "Лет на сцене в качестве скрипача"
+    }
+  ],
+  "products": [
+    {
+      "src": "upload/Work1.jpg",
+      "name": "Вино вдохновение",
+      "price": 500
+    },
+    {
+      "src": "upload/Work2.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "upload/Work3.jpg",
+      "name": "Вино вдохновение",
+      "price": 1000
+    },
+    {
+      "src": "upload/Work4.jpg",
+      "name": "Вино вдохновение",
+      "price": 500
+    },
+    {
+      "src": "upload/Work5.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "upload/Work6.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "upload/Work7.jpg",
+      "name": "Вино вдохновение",
+      "price": 500
+    },
+    {
+      "src": "upload/Work8.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "upload/Work9.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    }
+  ]
+}
